@@ -12,5 +12,12 @@
 <body>
 	<h3>JSON</h3>
 	<a href="${root}/json.stu?msg=obj">JSON - Object</a>
+	<br/><br/>
+	
+	<a href="${root}/json.stu?msg=arr">JSON - ArrayList</a>	
+	<br/><br/>
+	
+	<a href="${root}/json.stu?msg=mix">JSON - Object ArrayList</a>	
+	<br/><br/>
 </body>
 </html>

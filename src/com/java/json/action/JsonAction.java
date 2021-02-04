@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.java.command.Command;
-
+// 2021-02-03
 public class JsonAction implements Command {
 
 	@Override
@@ -15,8 +15,13 @@ public class JsonAction implements Command {
 		logger.info(logMsg + msg);
 		
 		if(msg.equals("obj")) {
-			return "/WEB-INF/views/JsonObj.jsp";
-		}else {
+			return "/WEB-INF/views/json/JsonObj.jsp";
+			// 21-02-04
+		}else if(msg.equals("arr")) {
+			return "/WEB-INF/views/json/JsonArr.jsp";
+		}else if(msg.equals("mix")) {
+			return "/WEB-INF/views/json/JsonMix.jsp";
+		}else {			
 			return null;			
 		}
 	}
