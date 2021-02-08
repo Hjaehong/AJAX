@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- db에 데이터를 다 쓰는게 아닌 필요한 것 만 사용하기 때문에 resultMap를 사용 -->
+<mapper namespace="com.java.sawon.mapper.SawonMapper">
+	<resultMap type="com.java.sawon.dto.DeptDto" id="deptDto" >
+		<result column="department_id" property="department_id" />
+		<result column="department_name" property="department_name" />
+	</resultMap>
+	
+	<resultMap type="com.java.sawon.dto.EmpDto" id="empDto">
+		<result column="employee_id" property="employee_id" />
+		<result column="first_name" property="first_name" />
+		<result column="hire_date" property="hire_date" />
+		<result column="job_id" property="job_id" />
+		<result column="salary" property="salary" />
+		<result column="department_id" property="department_id" />
+
+		<collection property="deptDto" resultMap="deptDto" />
+	</resultMap>
+
+	<select id="deptList" resultType="com.java.sawon.dto.DeptDto">
+		select department_name from departments
+	</select>
+
+	<select id="sawonList" parameterType="String" resultMap="empDto">
+		<![CDATA[
+			select e.employee_id, 
+				e.first_name, 
+				e.hire_date, 
+				e.job_id, 
+				e.salary, 
+				e.department_id, 
+				d.department_name
+			from employees e, departments d
+			where e.department_id = d.department_id
+			and d.department_name=#{departmentName}
+		
+		]]>
+	</select>
+</mapper>

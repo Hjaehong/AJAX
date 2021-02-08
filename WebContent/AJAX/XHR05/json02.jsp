@@ -14,12 +14,11 @@
 	function fromServer(){
 		arr.push(xhr.readyState + "," + xhr.status);
 		
-		
 		if(xhr.readyState==4 && xhr.status==200){
 			var obj=JSON.parse(xhr.responseText);
 			arr.push("member Length:" + obj.member.length);
 			
-		var divNode=document.createElement("div");
+			var divNode=document.createElement("div");
 			for(var i=0;i<obj.member.length;i++){
 				arr.push(obj.member[i].stdNumber);
 				arr.push(obj.member[i].stdName);
@@ -27,6 +26,7 @@
 				arr.push("\n");
 				
 				var ulNode=document.createElement("ul");
+				
 				var liNodeNumber=document.createElement("li");
 				liNodeNumber.innerHTML=obj.member[i].stdNumber;
 				
@@ -43,10 +43,10 @@
 				divNode.appendChild(ulNode);
 			}
 			
-			document.getElementById("result").appendChild(ulNode);
+			document.getElementById("result").appendChild(divNode);
 		}
 		
-		alert(arr.join("\n"));
+		// alert(arr.join("\n"));
 	}
 </script>
 </head>

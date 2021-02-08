@@ -22,7 +22,8 @@ import com.java.command.Command;
 /**
  * Servlet implementation class FrontController
  */
-@WebServlet(urlPatterns="*.stu", initParams=@WebInitParam(name="configFile", value="/WEB-INF/URICommand.properties"))
+@WebServlet(urlPatterns="*.stu", 
+	               initParams=@WebInitParam(name="configFile", value="/WEB-INF/URICommand.properties"))
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HashMap<String, Object> commandMap=new HashMap<String, Object>();
@@ -89,24 +90,23 @@ public class FrontController extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		// template 미사용시 
 		if(viewPage !=null) {
 			RequestDispatcher rd=request.getRequestDispatcher(viewPage);
 			rd.forward(request, response);
 		}
 		
 		// template 사용시
-//		RequestDispatcher rd=null;
-//		
-//		if(viewPage !=null) {
-//			if(viewPage.equals("/WEB-INF/views/member/idCheck.jsp")|| viewPage.equals("/WEB-INF/views/member/zipcode.jsp")) {
-//				rd=request.getRequestDispatcher(viewPage);
-//			}else {
-//				request.setAttribute("viewPage", viewPage);
-//				rd=request.getRequestDispatcher("/template/tempIndex.jsp");
-//			}
-//			rd.forward(request, response);
-//		}
+		/*RequestDispatcher rd=null;
+		
+		if(viewPage !=null) {
+			if(viewPage.equals("/WEB-INF/views/member/idCheck.jsp")|| viewPage.equals("/WEB-INF/views/member/zipcode.jsp")) {
+				rd=request.getRequestDispatcher(viewPage);
+			}else {
+				request.setAttribute("viewPage", viewPage);
+				rd=request.getRequestDispatcher("/template/tempIndex.jsp");
+			}
+			rd.forward(request, response);
+		}*/
 	}
 
 	/**

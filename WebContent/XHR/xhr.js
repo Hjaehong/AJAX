@@ -27,7 +27,7 @@ function sendRequest(method, url, callback, params){
 		httpUrl +="?" + httpParams;
 	}
 	arr.push("httpUrl:" + httpUrl);
-	
+
 	xhr=createXHR();
 	arr.push("obj:" + xhr);
 	
