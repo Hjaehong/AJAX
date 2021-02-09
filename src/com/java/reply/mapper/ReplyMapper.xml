@@ -8,4 +8,22 @@
 		insert into linereply 
 		values(linreply_bunho_seq.nextval, #{line_reply})
 	</insert>
+	
+	<select id="replyList" resultType="com.java.reply.dto.ReplyDto">
+		select * from linereply order by bunho desc
+	</select>
+	
+	<select id="replyGetBunho" resultType="int">
+		<![CDATA[
+			select nvl(max(bunho),0) from linereply
+		]]>
+	</select>
+	
+	<delete id="replyDelete" parameterType="int">
+		delete from linereply where bunho=#{bunho}
+	</delete>
+	
+	<select id="replySelect" parameterType="int" resultType="com.java.reply.dto.ReplyDto">
+		select * from linereply where bunho=#{bunho}
+	</select>
 </mapper>
